@@ -4,7 +4,8 @@ import { FormEvent, Fragment, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { addUserEmailToProduct } from '@/lib/actions';
+import { addUserEmailToProduct, getProductUrl } from '@/lib/actions';
+import { Product } from '@/types';
 
 interface Props {
   productId: string;
@@ -14,7 +15,8 @@ const Modal = ({ productId }: Props) => {
   let [isOpen, setIsOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [email, setEmail] = useState('');
-
+  const productUrl = getProductUrl(productId);
+  console.log(productUrl);
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);

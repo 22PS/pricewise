@@ -132,3 +132,16 @@ export async function addUserEmailToProduct(
     console.log(error);
   }
 }
+
+export async function getProductUrl(productId: string) {
+  try {
+    const product = await Product.findById(productId);
+
+    if (!product) return;
+
+    // console.log(product.url);
+    return product.url;
+  } catch (error) {
+    console.log(error);
+  }
+}
